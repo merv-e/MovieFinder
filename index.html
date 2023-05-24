@@ -23,35 +23,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <header>
-        <!-- website name or logo -->
-        <p>Header</p>
-    </header>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <div class="progress-container">
+            <div class="progress" id="progress"></div>
+            <div class="circle active">1</div>
+            <div class="circle">2</div>
+            <div class="circle">3</div>
+            <div class="circle">4</div>
+        </div>
 
-    <main>
-        <h1>Boiler Plate</h1>
-        <article>
-            <h2></h2>
-                <p></p>
-            </article>
-            
-            <article>
-                <h2></h2>
-                   <p></p>
-            </article>
-    </main>
+        <button class="btn" id="prev" disabled>Prev</button>
+        <button class="btn" id="next">Next</button>
+    </div>
 
-    <footer>
-        <!-- Copyright notices and some other content -->
-    </footer>
     <script src="js/script.js"></script>
 </body>
 </html>
