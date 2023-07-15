@@ -1,41 +1,123 @@
-@import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+:root{
+    --primary-color: #231F20;
+    --secondary-color: #BB4430;
+    --ternary-color: #DBD8F0;
+}
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    text-align:center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Anuphan', sans-serif;
+    font-family: 'Poppins', sans-serif; 
     margin: 0;
-    /* overflow: hidden; */
+    /* color: var(--ternary-color); */
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    padding: 0 1rem;
+    z-index: 10;
+    top:0;
+    left: 0;
+    right: 0;
+    position: sticky;
+}
+
+header p {
+    font-size: large;
+}
+
+.search{
+    font-family: inherit;
+    border: 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding: .3rem 0.7rem;
+}
+
+.search::placeholder{
+    color: var(--secondary-color);
+}
+
+.search:focus{
+    outline: none;
 }
 
 main {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-nav {
-    /* display: flex; */
-    background-color: aqua;
-}
-
-ul {
+    /* position: relative; */
     display: flex;
     justify-content: center;
-    align-items: center;
-    list-style: none;
-    text-decoration: none;
-    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    gap: 2rem;
 }
 
-/* h1 {
-} */
+.movie {
+    width: 300px;
+    margin: 2rem;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    box-shadow:0 4px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: #eee;
+    letter-spacing: 0.5px;
+}
+
+.movie-info span {
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--ternary-color);
+    border: 2px solid var(--ternary-color);
+    border-radius: 3px;
+    color: #BB4430;
+}
+
+.movie-info span.low {
+    color: red;
+}
+
+.movie-info span.medium {
+    color: orange;
+}
+
+.movie-info span.high {
+    color: green;
+}
+
+.overview {
+    color: #eee;
+    padding: 2rem;
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.4s ease-in;
+    background-color: #BB4430;
+}
+
+.movie:hover .overview{
+    transform: translateX(0);
+}
