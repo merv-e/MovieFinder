@@ -1,29 +1,33 @@
-const API_URL = ("https://api.themoviedb.org/3/discover/movie?api_key=06037b2c68e092d4ab77bebfba7db548");
-  
-// const IMG_PATH = '';
+const API_URL =
+  "https://api.themoviedb.org/3/discover/movie?api_key=06037b2c68e092d4ab77bebfba7db548&page=1";
 
-const IMG_PATH = fetch(
-  "https://api.themoviedb.org/3/configuration"
-);
+const IMG_PATH = "https://api.themoviedb.org/3/collection/{collection_id}/images";
 
-  const fetchMovies = fetch(API_URL)
-  .then(data => {
-      console.log(data);
-  })
+const SEARCH_API =
+  'https://api.themoviedb.org/3/search/movie?api_key=06037b2c68e092d4ab77bebfba7db548&query="';
 
-  const fetchImages = IMG_PATH
-  .then(img => {
-      console.log(img);
-  })
+const form = document.getElementById('form');
+const search = document.getElementById('search');
 
- const search = document.getElementById('search');
+// Get Initial Movies
+getMovies(API_URL);
 
- search.addEventListener('', function (){
+async function getMovies (url) {
+  const res = await fetch(url)
+  const data = await res.json();
 
- })
-
-async function getMovies(url) {
-  
+  console.log(data.results);
 }
 
- //dk 4. => fetching images
+form.addEventListener('submit', function name(e) {
+  e.preventDefault();
+
+  const searchTerm = search.value;
+
+  if (searchTerm && searchTerm !== "") {
+    getMovies(SEARCH_API + searchTerm)
+    search.value = "";
+  } else {
+    window.location.reload();
+  }
+})
