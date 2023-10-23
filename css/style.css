@@ -13,7 +13,6 @@
 body {
     font-family: 'Poppins', sans-serif; 
     margin: 0;
-    /* color: var(--ternary-color); */
 }
 
 nav{
@@ -54,17 +53,16 @@ header p {
 }
 
 main {
-    /* position: relative; */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 5rem;
+    margin-top: 1rem;
     gap: 1.5rem;
 }
 
 .movie {
     width: 350px;
-    margin: 2rem;
+    margin: 1rem;
     background-color: var(--primary-color);
     border-radius: 5px;
     box-shadow:0 4px 5px rgba(0, 0, 0, 0.2);
