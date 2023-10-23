@@ -59,11 +59,11 @@ main {
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 5rem;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .movie {
-    width: 300px;
+    width: 350px;
     margin: 2rem;
     background-color: var(--primary-color);
     border-radius: 5px;
