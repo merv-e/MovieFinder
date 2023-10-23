@@ -21,52 +21,47 @@ const getMovies = async (url) => {
 // Get Initial Movies
 getMovies(API_URL);
 
-
-// console.log(`SEARCHVAL: ${search}`);
-console.log(`${search}`); //.value
-
 const showMovies = (movies) => {
-
-  if (movies.length ===0 ) {
+  if (movies.length === 0 ) {
     main.innerHTML = "No movie with this query has been found.";
   } else {
     main.innerHTML = "";
-    
+
     movies.forEach((movie) => {
-      const { title, poster_path, overview } = movie;
-      
-      const { vote_average} = movie;
-      
-      const vote_avarage_fixed =  vote_average.toFixed(1);
-      
+      const { title, poster_path, vote_average, overview } = movie;
+
+      const vote_avarage_fixed = vote_average.toFixed(1);
+
       const movieElement = document.createElement("div");
       movieElement.classList.add("movie");
-      
-      if(poster_path) {
+
+      if (poster_path) {
         movieElement.innerHTML = `
         <img src="${IMG_PATH + poster_path}" alt="${title}">
         <div class="movie-info">
         <h3>${title}</h3>
-        <span class="${getClassByRate(vote_average)}">${vote_avarage_fixed}</span>
+        <span class="${getClassByRate(
+          vote_average
+        )}">${vote_avarage_fixed}</span>
         </div>
         <div class="overview">
         <h3>Overview</h3>
         ${overview}
         </div>
         `;
-        
+
         main.appendChild(movieElement);
-      } 
+      }
     });
   }
-  };
+};
 
 const getClassByRate = (vote) => {
-  if(vote >= 8) {
-    return 'green';
-  } else if (vote >=5) {
-    return 'orange'
-  } else return 'red';
+  if (vote >= 8) {
+    return "green";
+  } else if (vote >= 5) {
+    return "orange";
+  } else return "red";
 };
 
 form.addEventListener("submit", function name(e) {
