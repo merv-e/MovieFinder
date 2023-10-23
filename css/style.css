@@ -34,6 +34,7 @@ nav{
 
 header p {
     font-size: large;
+    color:#eee;
 }
 
 .search{
@@ -106,7 +107,7 @@ main {
 }
 
 .overview {
-    color: #eee;
+    color: #eee; ;
     padding: 2rem;
     position: absolute; 
     bottom: 0;
@@ -115,7 +116,13 @@ main {
     max-height: 100%;
     transform: translateY(101%);
     transition: transform 0.4s ease-in;
-    background-color: #BB4430;
+    font-weight: 600;
+    /* background-color:transparent; */
+}
+
+.movie:hover :not(.overview, h3){
+    /* filter: blur(2px); */
+    opacity: 0.1;
 }
 
 .movie:hover .overview{
