@@ -18,7 +18,7 @@ const getMovies = async (url) => {
   showMovies(data.results);
 };
 
-// Get Initial Movies
+// Get All Movies
 getMovies(API_URL);
 
 const showMovies = (movies) => {
@@ -74,7 +74,7 @@ form.addEventListener("submit", function name(e) {
     search.value = "";
   }
 
-  // if not reload the page (code below)
+  // if not, reload the page (code below)
   else {
     window.location.reload();
   }
