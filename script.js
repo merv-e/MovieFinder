@@ -1,4 +1,4 @@
-const main = document.getElementById("main");
+const movieList = document.querySelector(".movie-list");
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 
@@ -14,27 +14,35 @@ const getMovies = async (url) => {
   const res = await fetch(url);
   const data = await res.json();
 
-  console.log(data.results);
+  // console.log(data.results);
   showMovies(data.results);
 };
 
-// Get All Movies
+// Fetch All Movies
 getMovies(API_URL);
 
 const showMovies = (movies) => {
-  if (movies.length === 0 ) {
-    main.innerHTML = "No movie with this query has been found.";
+  if (movies.length === 0) {
+    movieList.innerHTML = "No movie with this query has been found.";
   } else {
-    main.innerHTML = "";
+    movieList.innerHTML = "";
+
+    const sortMoviesByRate = movies.sort(
+      (a, b) => b.vote_average - a.vote_average
+    );
+    console.log(sortMoviesByRate);
 
     movies.forEach((movie) => {
-      const { title, poster_path, vote_average, overview } = movie;
+      const { title, poster_path, vote_average, overview, popularity } = movie;
 
-      const vote_avarage_fixed = vote_average.toFixed(1);
+      const vote_avarage_fixed = Number.isInteger(vote_average)
+        ? vote_average
+        : vote_average.toFixed(1);
 
       const movieElement = document.createElement("div");
       movieElement.classList.add("movie");
 
+      // form the structure of the movie element in the DOM
       if (poster_path) {
         movieElement.innerHTML = `
         <img src="${IMG_PATH + poster_path}" alt="${title}">
@@ -50,18 +58,19 @@ const showMovies = (movies) => {
         </div>
         `;
 
-        main.appendChild(movieElement);
+        movieList.appendChild(movieElement);
       }
     });
   }
 };
 
+// change color depending on the rating
 const getClassByRate = (vote) => {
-  if (vote >= 8) {
-    return "green";
-  } else if (vote >= 5) {
-    return "orange";
-  } else return "red";
+  if (vote >= 7.5) {
+    return "high";
+  } else if (vote >= 5.5) {
+    return "medium";
+  } else return "low";
 };
 
 form.addEventListener("submit", function name(e) {
